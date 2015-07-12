@@ -1,0 +1,44 @@
+QMM - Q3 MultiMod
+Copyright QMM Team 2004
+http://www.quake3mm.net/
+
+Licensing:
+    QMM is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    QMM is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with QMM; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+Created By:
+    Kevin Masterson a.k.a. CyberMind <cybermind@users.sourceforge.net>
+
+Special Thanks:
+    Code3Arena (http://www.planetquake.com/code3arena/)
+
+CHANGE LOG
+Version: 0.4.0b (8/29/04)
+	- Added JK2 and JKA support
+	- Added -ldl flag to Makefile to link libdl (JK2 needed it)
+	- Added QMM_VERSION_DWORD macro and support for including version.h in qmm.rc
+	- Improved plugins.ini parsing
+
+Version: 0.3.0b (8/17/04)
+	- Added RtCW support
+	- Added support for "Post" API plugin functions (QMM_vmMain_Post & QMM_syscall_Post)
+	- Added more output for startup operations
+	- Added SETVMHOOK_VOID and SETVMHOOK macros in qmm.h for plugins hooking non-API functions
+	- Changed "result" pointer to be a static CPlugin member
+	- Changed GETPTR and SETPTR macros in qmm.h to use variable g_vmbase, set in plugins' vmMain_Post
+	- Changed some WARNINGs to ERRORs and some ERRORs to WARNINGs and one FATAL ERROR
+	- Changed mod/plugin shutdown order (plugins unload first now)
+	- Changed location of debug log, qmmlog.txt is now in the mod directory
+	- Moved Linux builds to ./linux directory
+	- Fixed bug in which unloading the first plugin might corrupt the linked list
