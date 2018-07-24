@@ -1,0 +1,5 @@
+http://www.sourceforge.net/projects/pdatabase
+
+If you wish to use pdb as a shared library, you can compile these files
+into your project.  They include functions to easily load and unload
+pdb, as well as wrappers for the entire documented API.
