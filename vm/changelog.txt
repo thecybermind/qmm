@@ -1,0 +1,49 @@
+QMMVM - VM Wrapper Tool
+Copyright QMM Team 2004
+http://www.quake3mm.net/
+
+Licensing:
+    QMM is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    QMM is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with QMM; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+Created By:
+    Kevin Masterson a.k.a. CyberMind <cybermind@users.sourceforge.net>
+
+Special Thanks:
+    VM code from Q3Fusion (http://www.sourceforge.net/projects/q3fusion/)
+    VM info from Phaethon (http://www.icculus.org/~phaethon/q3mc/q3vm_specs.html)
+    Code3Arena (http://www.planetquake.com/code3arena/)
+
+
+CHANGE LOG
+Version: 0.4.0b (8/29/04)
+	- Added JK2 support
+	- Added qmmvm_stacksize cvar to allow custom stack sizes
+	- Added 'savemem' parameter to VM_Restart() to specify whether or not to reload into same memory space
+	- Added QMMVM_VERSION_DWORD macro and support for including version.h in qmmvm.rc
+	- Optimized big-endian machine support for VMs (but there's only x86 servers? oh well)
+	- Optimized VM loading (slightly)
+	- Changed OP_UNDEF, OP_NOP, OP_BREAK, and default opcodes to error in console output only (no shutdown)
+	- Removed g_vmerror flag variable, now checks g_VM.memory value
+
+Version: 0.3.0b (7/28/04)
+	- Added qmmvm_debug 2 setting for op code debugging
+	- Added additional VM info to startup and qmmvm_status output
+	- Added support for calling real function pointers (for hooking gentity_t function pointer members)
+	- Added support for special GAME message value -1 for plugins to use to set VM function for hook chain
+	- Added support for dereferencing real pointers (for malloc(), realloc(), free())
+	- Heavily commented VM code
+	- Changed handling of OP_BREAK to use G_ERROR syscall (rather than trying to dereference NULL)
+	- Changed location of debug log, qmmvmlog.txt is now in the mod directory
+	- Removed vmptr() macro for VM_SysCalls (since real pointers are handled properly)

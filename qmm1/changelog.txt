@@ -1,0 +1,107 @@
+QMM - Q3 MultiMod
+Copyright QMM Team 2005
+http://www.q3mm.org/
+
+Licensing:
+    QMM is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    QMM is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with QMM; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+Created By:
+    Kevin Masterson a.k.a. CyberMind <kevinm@planetquake.com>
+
+CHANGE LOG
+Version: 1.1.3 (03/04/06)
+	- Added plugin version to "qmm list" output, requested by im2good4u
+	- Fixed crash bug related to GAME_CLIENT_CONNECT return value pointer, it is now modified for QVMs as necesary
+
+Version: 1.1.2 (02/21/06)
+	- Fixed a bug related to NoCrash output, user that is performing the exploit is no longer shown
+
+Version: 1.1.1 (01/30/06)
+	- Fixed compile error in source download
+	- Removed temporary debugging code that I left in CVMMod::vmMain that caused crashes under certain circumstances
+	
+Version: 1.1.0 (01/29/06)
+	- Added another sanity check when loading a QVM
+	- Added greeting for newly-connecting clients
+	- Added global "nogreeting" option (integer type) to qmm.ini to disable the greeting
+	- Added NoCrash functionality directly into QMM
+	- Added NoCrash block for long commands (can overflow buffers while in QVM mode)
+	- Added qmm_nocrash cvar to enable/disable NoCrash functionality (default is enabled, "1")
+	- Big thanks to =FF= Clan ( http://www.ffclan.net/ ) for the original NoCrash plugin idea!
+	- Added "source" column in "qmm list" output, shows where plugin was loaded from, can either be "cmd" or "conf"
+	- Fixed "Paused" column in "qmm list" output
+	- Changed applicable cvars to use CVAR_ARCHIVE flag instead of CVAR_NORESTART
+	- Changed default qmmexec path to qmmaddons/qmm/qmmexec.cfg
+	- Changed failure method if unable to determine game engine, now uses G_ERROR assuming value of 1
+	- Changed plugin API version to 1:0
+	- Removed the ability to set read-only cvars qmm_version and qmm_game
+	- Removed support for QMM-provided malloc/free functions for QVM mods
+	- Removed QVM callback support, will be improved in future versions
+	- Removed support for qmm.cfg and qmm.conf, only qmm.ini is supported
+
+Version: 1.0.0 (10/13/05)
+	- Added 'qmm shutdown' command to unload all unneccesary functions
+		* Sets qmm_shutdown cvar just before entering shutdown mode
+		* QMM just routes syscall and vmMain calls
+		* Checks qmm_shutdown cvar on load, does minimal load if set
+		
+	- Added more mod information to 'qmm status'
+	- Added set of helper functions passed to plugins on load
+	- Added plugin interface versioning system
+	- Added detection of linux user home directories, i.e. ~/.q3a/
+	- Added support for GCC's address-of-label operator to speed up
+	  QVM opcode execution
+	- Added non-intrusive message to all clients on initial connection
+	- Improved loading of mod and usage of fallbacks/defaults
+	- QVM mod files no longer loaded into memory first
+	- Managers are now true singletons loaded with Mgr::GetInstance()
+	- Fixed errors in linux game recognition/default settings
+	- Fixed errors in auto mod-file loading settings
+	- Fixed bug where plugins were given wrong pointer for mod's vmMain
+	  function in QMM_Attach()
+	- Failed DLL loads now output dlerror() information
+	
+Version: 0.9.0b (?/?/05)
+	- Integrated QVM support into 1 QMM build, QMMVM is deprecated
+	- Integrated game support into 1 QMM build
+	- Added plugin helper functions passed in QMM_Attach
+	- Added game auto-detect
+	- Added pdb database system (http://pdatabase.sourceforge.net/) for
+	  configuration file handling
+
+Version: 0.4.0b (8/29/04)
+	- Added JK2 and JKA support
+	- Added -ldl flag to Makefile to link libdl (JK2 needed it)
+	- Added QMM_VERSION_DWORD macro and support for including version.h in
+	  qmm.rc
+	- Improved plugins.ini parsing
+
+Version: 0.3.0b (8/17/04)
+	- Added RtCW support
+	- Added support for "Post" API plugin functions (QMM_vmMain_Post &
+	  QMM_syscall_Post)
+	- Added more output for startup operations
+	- Added SETVMHOOK_VOID and SETVMHOOK macros in qmm.h for plugins hooking
+	  non-API functions
+	- Changed "result" pointer to be a static CPlugin member
+	- Changed GETPTR and SETPTR macros in qmm.h to use variable g_vmbase,
+	  set in plugins' vmMain_Post
+	- Changed some WARNINGs to ERRORs and some ERRORs to WARNINGs and one
+	  FATAL ERROR
+	- Changed mod/plugin shutdown order (plugins unload first now)
+	- Changed location of debug log, qmmlog.txt is now in the mod directory
+	- Moved Linux builds to ./linux directory
+	- Fixed bug in which unloading the first plugin might corrupt the linked
+	  list

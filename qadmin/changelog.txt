@@ -1,0 +1,57 @@
+QADMIN_QMM - QMM plugin
+Copyright QMM Team 2004
+http://www.quake3mm.net/
+
+Created By:
+    Kevin Masterson a.k.a. CyberMind <cybermind@users.sourceforge.net>
+
+CHANGE LOG
+Version: 1.2.3 (03/08/06)
+	- Added admin_gagged_cmds cvar
+	- Added admin_gagslot command
+	- Added admin_ungagslot command
+	- Added admin_banslot command
+	- Fixed admin_banip bug regarding immunity
+	- Moved extra gagged commands added in 1.2.2 into admin_gagged_cmds cvar
+	- Removed admin_gag_showchat cvar
+
+Version: 1.2.2 (03/08/06)
+	- Users with 256 access (admin_ban) now see users' IPs in admin_userlist
+	- Reordered data in admin_userlist
+	- Added extra chat commands to be gagged: say_team, tell, vsay, vsay_team,
+		vtell, vosay, vosay_team, votell, and vtaunt
+	- Fixed client crash when using admin_listmaps with lots of maps
+
+Version: 1.2.1 (03/04/06)
+	- Modified player connect function slightly to prevent possible problems
+
+Version: 1.2.0 (02/01/06)
+	- Added immunity access level and changed commands to accomodate it
+	- Added admin_currentmap
+	- Added admin_login as a say command
+	- Fixed admin_help
+	- Fixed admin_userlist
+	- Changed "vote" command to "castvote"
+	- Removed use of malloc/free from lcase()
+
+Version: 1.1.0 (01/29/06)
+	- Compiled against updated QMM plugin API versions
+	- Removed use of malloc/free in admin_vote_map
+	
+Version: 1.0.0 (10/13/05)
+	- Released
+
+Licensing:
+    QMM is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    QMM is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with QMM; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
